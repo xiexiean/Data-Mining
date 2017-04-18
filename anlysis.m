@@ -1,10 +1,10 @@
 clear ; close all; clc
-s=[1 2 3 7 8 9 10 11 12 13 14 15 17 18 21 23 24 25 26 27 28]; %±êÁ¿ÊôĞÔ
-n=[4 5 6 16 19 20 22];    %ÊıÖµÊôĞÔ
+s=[1 2 3 7 8 9 10 11 12 13 14 15 17 18 21 23 24 25 26 27 28]; %æ ‡é‡å±æ€§
+n=[4 5 6 16 19 20 22];    %æ•°å€¼å±æ€§
 name={'surgery','Age','Hospital Number ','rectal temperature','pulse ','respiratory rate','temperature of extremities','peripheral pulse ','mucous membranes','capillary refill time','pain','peristalsis','abdominal distension','nasogastric tube','nasogastric reflux','nasogastric reflux PH','rectal examination - feces','abdomen','packed cell volume','total protein','abdominocentesis appearance','abdomcentesis total protein','outcome','surgical lesion','type of lesion1','type of lesion2','type of lesion3','cp_data'};
-[data]=xlsread('data'); %¼ÓÔØÊı¾İ
+[data]=xlsread('data'); %åŠ è½½æ•°æ®
 
-%¶Ô±ê³ÆÊôĞÔ£¬¸ø³öÃ¿¸ö¿ÉÄÜÈ¡ÖµµÄÆµÊı
+%å¯¹æ ‡ç§°å±æ€§ï¼Œç»™å‡ºæ¯ä¸ªå¯èƒ½å–å€¼çš„é¢‘æ•°
 Data=cell(1,28);
 for k=s      
     c=tabulate(data(:,k));  
@@ -20,36 +20,36 @@ for k=s
     disp(Data{1,k}(:,1:2));
 end
 
-%Çó×î´óÖµ
+%æ±‚æœ€å¤§å€¼
 max=max(data);     
-%Çó×îĞ¡Öµ
+%æ±‚æœ€å°å€¼
 min=min(data);      
-%Çó¾ùÖµ
+%æ±‚å‡å€¼
 mean=nanmean(data);     
-%ÇóÖĞÎ»Êı
+%æ±‚ä¸­ä½æ•°
 median=nanmedian(data);    
-%ÇóÉÏËÄ·ÖÎ»Êı
+%æ±‚ä¸Šå››åˆ†ä½æ•°
 Q1=prctile(data,25);    
-%ÇóÏÂËÄ·ÖÎ»Êı
+%æ±‚ä¸‹å››åˆ†ä½æ•°
 Q3=prctile(data,75);     
-%È±Ê§Öµ
+%ç¼ºå¤±å€¼
 empty=sum(isnan(data)); 
-%×î´ó¡¢×îĞ¡¡¢¾ùÖµ¡¢ÖĞÎ»Êı¡¢ËÄ·ÖÎ»Êı¼°È±Ê§ÖµµÄ¸öÊı
+%æœ€å¤§ã€æœ€å°ã€å‡å€¼ã€ä¸­ä½æ•°ã€å››åˆ†ä½æ•°åŠç¼ºå¤±å€¼çš„ä¸ªæ•°
 num=[max;min;mean;median;Q1;Q3;empty];  
 %num(:,s)=[];
 
 for k=n
     fprintf('%s:\n',name{k});
-    fprintf('×î´óÖµ:%4.4f\n×îĞ¡Öµ:%4.4f\n¾ùÖµ:%4.4f\nÖĞÎ»Êı:%4.4f\nÉÏËÄ·ÖÎ»Êı:%4.4f\nÏÂËÄ·ÖÎ»Êı:%4.4f\nÈ±Ê§Öµ:%4.4f\n',num(1,k),num(2,k),num(3,k),num(4,k),num(5,k),num(6,k),num(7,k));  
+    fprintf('æœ€å¤§å€¼:%4.4f\næœ€å°å€¼:%4.4f\nå‡å€¼:%4.4f\nä¸­ä½æ•°:%4.4f\nä¸Šå››åˆ†ä½æ•°:%4.4f\nä¸‹å››åˆ†ä½æ•°:%4.4f\nç¼ºå¤±å€¼:%4.4f\n',num(1,k),num(2,k),num(3,k),num(4,k),num(5,k),num(6,k),num(7,k));  
 end
 
 
 for k=n
     figure(1);
     subplot(1,2,1),hist(data(:,k));
-    title([name{k},'£ºÖ±·½Í¼']);
+    title([name{k},'ï¼šç›´æ–¹å›¾']);
     subplot(1,2,2),qqplot(data(:,k));
-    title([name{k},'£ºqqÍ¼']);
+    title([name{k},'ï¼šqqå›¾']);
     hold on;
     pause;
     hold off;
@@ -57,73 +57,73 @@ end
 
     figure(1);
     subplot(2,4,1),qqplot(data(:,4));
-    title([name{4},'£ºqqÍ¼']);
+    title([name{4},'ï¼šqqå›¾']);
     subplot(2,4,2),qqplot(data(:,5));
-    title([name{5},'£ºqqÍ¼']);
+    title([name{5},'ï¼šqqå›¾']);
     subplot(2,4,3),qqplot(data(:,6));
-    title([name{6},'£ºqqÍ¼']);   
+    title([name{6},'ï¼šqqå›¾']);   
     subplot(2,4,4),qqplot(data(:,16));
-    title([name{16},'£ºqqÍ¼']);
+    title([name{16},'ï¼šqqå›¾']);
     subplot(2,4,5),qqplot(data(:,19));
-    title([name{19},'£ºqqÍ¼']);
+    title([name{19},'ï¼šqqå›¾']);
     subplot(2,4,6),qqplot(data(:,20));
-    title([name{20},'£ºqqÍ¼']);
+    title([name{20},'ï¼šqqå›¾']);
     subplot(2,4,7),qqplot(data(:,22));
-    title([name{22},'£ºqqÍ¼']);
+    title([name{22},'ï¼šqqå›¾']);
     hold on;
     pause;
     hold off;
 
 close(figure(gcf));
-%»æÖÆºĞÍ¼
+%ç»˜åˆ¶ç›’å›¾
 % for k=n
 %     figure(2);
 %     boxplot(data(:,k));
-%     title([name{k} ,'£ººĞÍ¼']);
+%     title([name{k} ,'ï¼šç›’å›¾']);
 %     hold on;
 %     pause;
 %     hold off;
 % end
     figure(2);
     subplot(2,4,1),boxplot(data(:,4));
-    title([name{4},'£ººĞÍ¼']);
+    title([name{4},'ï¼šç›’å›¾']);
     subplot(2,4,2),boxplot(data(:,5));
-    title([name{5},'£ººĞÍ¼']);
+    title([name{5},'ï¼šç›’å›¾']);
     subplot(2,4,3),boxplot(data(:,6));
-    title([name{6},'£ººĞÍ¼']);   
+    title([name{6},'ï¼šç›’å›¾']);   
     subplot(2,4,4),boxplot(data(:,16));
-    title([name{16},'£ººĞÍ¼']);
+    title([name{16},'ï¼šç›’å›¾']);
     subplot(2,4,5),boxplot(data(:,19));
-    title([name{19},'£ººĞÍ¼']);
+    title([name{19},'ï¼šç›’å›¾']);
     subplot(2,4,6),boxplot(data(:,20));
-    title([name{20},'£ººĞÍ¼']);
+    title([name{20},'ï¼šç›’å›¾']);
     subplot(2,4,7),boxplot(data(:,22));
-    title([name{22},'£ººĞÍ¼']);
+    title([name{22},'ï¼šç›’å›¾']);
     hold on;
     pause;
     hold off;
 close(figure(gcf));
 
-%ÌŞ³ıÈ±Ê§Öµ 
+%å‰”é™¤ç¼ºå¤±å€¼ 
 nan=data;
 nan(any(isnan(nan)'),:)=[];
 for k=n
     figure(3);
     subplot(2,2,1),hist(data(:,k));
-    title([name{k} ,'£ºÌŞ³ıÖ®Ç°µÄÖ±·½Í¼']);
+    title([name{k} ,'ï¼šå‰”é™¤ä¹‹å‰çš„ç›´æ–¹å›¾']);
     subplot(2,2,2),hist(nan(:,k));
-    title([name{k} ,'£ºÌŞ³ıÖ®ºóµÄÖ±·½Í¼']);
+    title([name{k} ,'ï¼šå‰”é™¤ä¹‹åçš„ç›´æ–¹å›¾']);
     subplot(2,2,3),qqplot(data(:,k));
-    title([name{k} ,'£ºÌŞ³ıÖ®Ç°µÄqqÍ¼']);
+    title([name{k} ,'ï¼šå‰”é™¤ä¹‹å‰çš„qqå›¾']);
     subplot(2,2,4),qqplot(nan(:,k));
-    title([name{k} ,'£ºÌŞ³ıÖ®ºóµÄqqÍ¼']);     
+    title([name{k} ,'ï¼šå‰”é™¤ä¹‹åçš„qqå›¾']);     
     hold on;
     pause;
     hold off;
 end
 close(figure(gcf));
 xlswrite('nonan.xls',nan,'sheet1','A1');
-%×î¸ßÆµÖµ 
+%æœ€é«˜é¢‘å€¼ 
 hf=data;
 for k=n
     h=mode(hf(:,k));
@@ -131,53 +131,53 @@ for k=n
     hf1(isnan(hf1)) = h;
     figure(4);
     subplot(2,2,1),hist(data(:,k));
-    title([name{k} ,'£ºĞŞ¸ÄÖ®Ç°µÄÖ±·½Í¼']);
+    title([name{k} ,'ï¼šä¿®æ”¹ä¹‹å‰çš„ç›´æ–¹å›¾']);
     subplot(2,2,2),hist(hf1);
-    title([name{k} ,'£ºĞŞ¸ÄÖ®ºóµÄÖ±·½Í¼']);
+    title([name{k} ,'ï¼šä¿®æ”¹ä¹‹åçš„ç›´æ–¹å›¾']);
     subplot(2,2,3),qqplot(data(:,k));
-    title([name{k} ,'£ºĞŞ¸ÄÖ®Ç°µÄqqÍ¼']);
+    title([name{k} ,'ï¼šä¿®æ”¹ä¹‹å‰çš„qqå›¾']);
     subplot(2,2,4),qqplot(hf1);
-    title([name{k} ,'£ºĞŞ¸ÄÖ®ºóµÄqqÍ¼']);     
+    title([name{k} ,'ï¼šä¿®æ”¹ä¹‹åçš„qqå›¾']);     
     hold on;
     pause;
     hold off;
 end
 close(figure(gcf));
-%Ïà¹ØĞÔ
+%ç›¸å…³æ€§
 analytic_mat=data;
 [m, n1] = size(analytic_mat); 
 ATTRIBUTE_L = 1;
 ATTRIBUTE_H = 28;
 standard_line = analytic_mat(11, ATTRIBUTE_L: ATTRIBUTE_H);
-% »ñµÃÏà¹ØĞÔ¾ØÕó£¬º¯Êı¼ûÏÂ
-%CORRELATION_MAT_ATTRIBUTE ¼ÆËãÊôĞÔÖ®¼äµÄÏà¹ØĞÔ¾ØÕó¡£
-% ¾ÍÊÇĞĞºÍÁĞ¶¼ÊÇÊôĞÔ£¬value(i,j)ÊÇÊôĞÔiºÍÊôĞÔjµÄÏà¹ØĞÔ¡£ËüÊÇ¶Ô³Æ¾ØÕóÓ´¡£
-COR_SIZE = ATTRIBUTE_H - ATTRIBUTE_L + 1; % Ïà¹ØĞÔ¾ØÕóµÄ´óĞ¡
-cor_mat = -ones(COR_SIZE, COR_SIZE); % ³õÊ¼»¯Ïà¹ØĞÔ¾ØÕó£¬ÓÉÓÚÒªÈ¡×î´óÏà¹ØĞÔ£¬³õÊ¼Îª×îĞ¡Öµ£¨-1£©
+% è·å¾—ç›¸å…³æ€§çŸ©é˜µï¼Œå‡½æ•°è§ä¸‹
+%CORRELATION_MAT_ATTRIBUTE è®¡ç®—å±æ€§ä¹‹é—´çš„ç›¸å…³æ€§çŸ©é˜µã€‚
+% å°±æ˜¯è¡Œå’Œåˆ—éƒ½æ˜¯å±æ€§ï¼Œvalue(i,j)æ˜¯å±æ€§iå’Œå±æ€§jçš„ç›¸å…³æ€§ã€‚å®ƒæ˜¯å¯¹ç§°çŸ©é˜µå“Ÿã€‚
+COR_SIZE = ATTRIBUTE_H - ATTRIBUTE_L + 1; % ç›¸å…³æ€§çŸ©é˜µçš„å¤§å°
+cor_mat = -ones(COR_SIZE, COR_SIZE); % åˆå§‹åŒ–ç›¸å…³æ€§çŸ©é˜µï¼Œç”±äºè¦å–æœ€å¤§ç›¸å…³æ€§ï¼Œåˆå§‹ä¸ºæœ€å°å€¼ï¼ˆ-1ï¼‰
 for i = ATTRIBUTE_L: ATTRIBUTE_H - 1
     for j = i + 1: ATTRIBUTE_H
-        merge = [analytic_mat(:, i), analytic_mat(:, j)]; % ½«´ıÇóÏà¹ØÏµÊıµÄÁ½ÁĞ²¢ÆğÀ´
+        merge = [analytic_mat(:, i), analytic_mat(:, j)]; % å°†å¾…æ±‚ç›¸å…³ç³»æ•°çš„ä¸¤åˆ—å¹¶èµ·æ¥
         [NaN_line, ~] = find(isnan(merge) == 1);
-        merge(NaN_line, :) = []; % É¾µôº¬ÓĞNaNµÄĞĞÒÔ±ãÕıÈ·Çó½âÏà¹ØÏµÊı
+        merge(NaN_line, :) = []; % åˆ æ‰å«æœ‰NaNçš„è¡Œä»¥ä¾¿æ­£ç¡®æ±‚è§£ç›¸å…³ç³»æ•°
         cor_indx = i - ATTRIBUTE_L + 1;
-        cor_indy = j - ATTRIBUTE_L + 1; % Ïà¹ØĞÔ¾ØÕóÏÂ±ê
-        cor_mat(cor_indx, cor_indy) = corr(merge(:, 1), merge(:, 2)); % mergeµÄÁ½ÁĞ¼´È¥³ıNaNµÄÁ½ÊôĞÔ£¬ÇóÏà¹ØÏµÊı
-        cor_mat(cor_indy, cor_indx) = cor_mat(cor_indx, cor_indy); % ¶Ô³Æ¾ØÕó
+        cor_indy = j - ATTRIBUTE_L + 1; % ç›¸å…³æ€§çŸ©é˜µä¸‹æ ‡
+        cor_mat(cor_indx, cor_indy) = corr(merge(:, 1), merge(:, 2)); % mergeçš„ä¸¤åˆ—å³å»é™¤NaNçš„ä¸¤å±æ€§ï¼Œæ±‚ç›¸å…³ç³»æ•°
+        cor_mat(cor_indy, cor_indx) = cor_mat(cor_indx, cor_indy); % å¯¹ç§°çŸ©é˜µ
     end
 end
 cor_mat(isnan(cor_mat)) = -1;
-cor_size = size(cor_mat, 1); % ¾ØÕó´óĞ¡£¬Õı³£Çé¿öÏÂÊÇ·½Õó
+cor_size = size(cor_mat, 1); % çŸ©é˜µå¤§å°ï¼Œæ­£å¸¸æƒ…å†µä¸‹æ˜¯æ–¹é˜µ
 for i = 1: m
     for j = ATTRIBUTE_L: ATTRIBUTE_H
         if(isnan(analytic_mat(i, j)))
             [~, index] = sort(cor_mat(j - ATTRIBUTE_L + 1, :));
-            index_list = fliplr(index); % sortÉıĞò£¬fliplr·­×ª£¬±ä³É½µĞò£¬µÃµ½²Î¿¼µÄÊôĞÔÓÅÏÈ¶ÈÁĞ±í
-            flag = 0; % ±êÊ¶ÊÇ·ñ²¹È«³É¹¦
+            index_list = fliplr(index); % sortå‡åºï¼Œfliplrç¿»è½¬ï¼Œå˜æˆé™åºï¼Œå¾—åˆ°å‚è€ƒçš„å±æ€§ä¼˜å…ˆåº¦åˆ—è¡¨
+            flag = 0; % æ ‡è¯†æ˜¯å¦è¡¥å…¨æˆåŠŸ
             for k = 1: cor_size
-                ref_attr = index_list(k); % ÓÃÓÚ²¹È«²Î¿¼µÄÊôĞÔ
+                ref_attr = index_list(k); % ç”¨äºè¡¥å…¨å‚è€ƒçš„å±æ€§
                 if(~isnan(analytic_mat(i, ref_attr)))
                     analytic_mat(i, j) = standard_line(j - ATTRIBUTE_L + 1) / standard_line(ref_attr) * ...
-                        analytic_mat(i, ref_attr + ATTRIBUTE_L - 1); % °´±ÈÀı²¹È«£¨Õâ²»ÊÇ×îºÃµÄ·½·¨£©
+                        analytic_mat(i, ref_attr + ATTRIBUTE_L - 1); % æŒ‰æ¯”ä¾‹è¡¥å…¨ï¼ˆè¿™ä¸æ˜¯æœ€å¥½çš„æ–¹æ³•ï¼‰
                     flag = 1;
                     break;
                 end
@@ -193,13 +193,13 @@ hf=analytic_mat;
 for k=n
     figure(5);
     subplot(2,2,1),hist(data(:,k));
-    title([name{k} ,'£ºĞŞ¸ÄÖ®Ç°µÄÖ±·½Í¼']);
+    title([name{k} ,'ï¼šä¿®æ”¹ä¹‹å‰çš„ç›´æ–¹å›¾']);
     subplot(2,2,2),hist(hf(:,k));
-    title([name{k} ,'£ºĞŞ¸ÄÖ®ºóµÄÖ±·½Í¼']);
+    title([name{k} ,'ï¼šä¿®æ”¹ä¹‹åçš„ç›´æ–¹å›¾']);
     subplot(2,2,3),qqplot(data(:,k));
-    title([name{k} ,'£ºĞŞ¸ÄÖ®Ç°µÄqqÍ¼']);
+    title([name{k} ,'ï¼šä¿®æ”¹ä¹‹å‰çš„qqå›¾']);
     subplot(2,2,4),qqplot(hf(:,k));
-    title([name{k} ,'£ºĞŞ¸ÄÖ®ºóµÄqqÍ¼']);     
+    title([name{k} ,'ï¼šä¿®æ”¹ä¹‹åçš„qqå›¾']);     
     hold on;
     pause;
     hold off;
@@ -207,49 +207,31 @@ end
 close(figure(gcf));
 xlswrite('cor.xls',analytic_mat,'sheet1','A1');
 
-%ÏàËÆĞÔ
-%CORRELATION_MAT_ATTRIBUTE ¼ÆËãÊôĞÔÖ®¼äµÄÏà¹ØĞÔ¾ØÕó¡£
-%   ¾ÍÊÇĞĞºÍÁĞ¶¼ÊÇÊôĞÔ£¬value(i,j)ÊÇÊôĞÔiºÍÊôĞÔjµÄÏà¹ØĞÔ¡£ËüÊÇ¶Ô³Æ¾ØÕóÓ´¡£
-analytic_mat=data;
-COR_SIZE = ATTRIBUTE_H - ATTRIBUTE_L + 1; % Ïà¹ØĞÔ¾ØÕóµÄ´óĞ¡
-
-cor_mat = -ones(COR_SIZE, COR_SIZE); % ³õÊ¼»¯Ïà¹ØĞÔ¾ØÕó£¬ÓÉÓÚÒªÈ¡×î´óÏà¹ØĞÔ£¬³õÊ¼Îª×îĞ¡Öµ£¨-1£©
-for i = ATTRIBUTE_L: ATTRIBUTE_H - 1
-    for j = i + 1: ATTRIBUTE_H
-        merge = [analytic_mat(:, i), analytic_mat(:, j)]; % ½«´ıÇóÏà¹ØÏµÊıµÄÁ½ÁĞ²¢ÆğÀ´
-        [NaN_line, ~] = find(isnan(merge) == 1);
-        merge(NaN_line, :) = []; % É¾µôº¬ÓĞNaNµÄĞĞÒÔ±ãÕıÈ·Çó½âÏà¹ØÏµÊı
-        cor_indx = i - ATTRIBUTE_L + 1;
-        cor_indy = j - ATTRIBUTE_L + 1; % Ïà¹ØĞÔ¾ØÕóÏÂ±ê
-        cor_mat(cor_indx, cor_indy) = corr(merge(:, 1), merge(:, 2)); % mergeµÄÁ½ÁĞ¼´È¥³ıNaNµÄÁ½ÊôĞÔ£¬ÇóÏà¹ØÏµÊı
-        cor_mat(cor_indy, cor_indx) = cor_mat(cor_indx, cor_indy); % ¶Ô³Æ¾ØÕó
-    end
-end
-cor_mat(isnan(cor_mat)) = -1;
-%SIMILARITY_MAT_SAMPLE ¼ÆËã¸÷¸öÑù±¾¼äµÄÏàËÆĞÔ¡£Óëcorrelation_mat_attributeÀàËÆ¡£
-%   ´Ë´¦ÏàËÆĞÔÊµ¼ÊÉÏÇóÁËÅ·¼¸ÀïµÃ¾àÀë£¬Òò´ËÔ½Ğ¡Ô½ÏàËÆ¡£ÆäÓàÓëÉÏÊöº¯ÊıÀàËÆ£¬²»×ö¶àÓàµÄ×¢ÊÍ¡£
-SIM_SIZE = size(analytic_mat, 1); % ÏàËÆ¾ØÕó´óĞ¡£¬Óëanalytic_matÑù±¾ÊıÒ»ÖÂ
-sim_mat = ones(SIM_SIZE, SIM_SIZE) * 999; % ³õÊ¼»¯Îª×î´ó¾àÀë
+%ç›¸ä¼¼æ€§
+%SIMILARITY_MAT_SAMPLE è®¡ç®—å„ä¸ªæ ·æœ¬é—´çš„ç›¸ä¼¼æ€§ã€‚ä¸correlation_mat_attributeç±»ä¼¼ã€‚
+%   æ­¤å¤„ç›¸ä¼¼æ€§å®é™…ä¸Šæ±‚äº†æ¬§å‡ é‡Œå¾—è·ç¦»ï¼Œå› æ­¤è¶Šå°è¶Šç›¸ä¼¼ã€‚å…¶ä½™ä¸ä¸Šè¿°å‡½æ•°ç±»ä¼¼ï¼Œä¸åšå¤šä½™çš„æ³¨é‡Šã€‚
+SIM_SIZE = size(analytic_mat, 1); % ç›¸ä¼¼çŸ©é˜µå¤§å°ï¼Œä¸analytic_matæ ·æœ¬æ•°ä¸€è‡´
+sim_mat = ones(SIM_SIZE, SIM_SIZE) * 999; % åˆå§‹åŒ–ä¸ºæœ€å¤§è·ç¦»
 for i = 1: SIM_SIZE - 1
     for j = i + 1: SIM_SIZE
         merge = [analytic_mat(i, ATTRIBUTE_L: ATTRIBUTE_H)', ...
-            analytic_mat(j, ATTRIBUTE_L: ATTRIBUTE_H)']; % ½«Á½ĞĞÑù±¾×ªÖÃºÏ²¢ÎªÊôĞÔÊıx2µÄ¾ØÕó
+            analytic_mat(j, ATTRIBUTE_L: ATTRIBUTE_H)']; % å°†ä¸¤è¡Œæ ·æœ¬è½¬ç½®åˆå¹¶ä¸ºå±æ€§æ•°x2çš„çŸ©é˜µ
         [NaN_line, ~] = find(isnan(merge) == 1);
         merge(NaN_line, :) = [];     
-        sim_mat(i, j) = norm(merge(:, 1) - merge(:, 2)); % Á½Ñù±¾µÄÅ·¼¸ÀïµÃ¾àÀë
-        sim_mat(j, i) = sim_mat(i, j); % ¶Ô³Æ¾ØÕó
+        sim_mat(i, j) = norm(merge(:, 1) - merge(:, 2)); % ä¸¤æ ·æœ¬çš„æ¬§å‡ é‡Œå¾—è·ç¦»
+        sim_mat(j, i) = sim_mat(i, j); % å¯¹ç§°çŸ©é˜µ
     end
 end
-        sim_size = size(sim_mat, 1); % ¾ØÕó´óĞ¡£¬Õı³£Çé¿öÏÂÊÇ·½Õó
+        sim_size = size(sim_mat, 1); % çŸ©é˜µå¤§å°ï¼Œæ­£å¸¸æƒ…å†µä¸‹æ˜¯æ–¹é˜µ
         for i = 1: m
             for j = ATTRIBUTE_L: ATTRIBUTE_H
                 if(isnan(analytic_mat(i, j)))
                     [~, index_list] = sort(sim_mat(i, :));
-                    flag = 0; % ±êÊ¶ÊÇ·ñ²¹È«³É¹¦
+                    flag = 0; % æ ‡è¯†æ˜¯å¦è¡¥å…¨æˆåŠŸ
                     for k = 1: sim_size
-                        ref_samp = index_list(k); % ÓÃÓÚ²¹È«²Î¿¼µÄÊôĞÔ
+                        ref_samp = index_list(k); % ç”¨äºè¡¥å…¨å‚è€ƒçš„å±æ€§
                         if(~isnan(analytic_mat(ref_samp, j)))
-                            analytic_mat(i, j) = analytic_mat(ref_samp, j); % Ô­ÑùÌîÉÏ£¬²¹È«
+                            analytic_mat(i, j) = analytic_mat(ref_samp, j); % åŸæ ·å¡«ä¸Šï¼Œè¡¥å…¨
                             flag = 1;
                             break;
                         end
@@ -265,13 +247,13 @@ hf=analytic_mat;
 for k=n
     figure(6);
     subplot(2,2,1),hist(data(:,k));
-    title([name{k} ,'£ºĞŞ¸ÄÖ®Ç°µÄÖ±·½Í¼']);
+    title([name{k} ,'ï¼šä¿®æ”¹ä¹‹å‰çš„ç›´æ–¹å›¾']);
     subplot(2,2,2),hist(hf(:,k));
-    title([name{k} ,'£ºĞŞ¸ÄÖ®ºóµÄÖ±·½Í¼']);
+    title([name{k} ,'ï¼šä¿®æ”¹ä¹‹åçš„ç›´æ–¹å›¾']);
     subplot(2,2,3),qqplot(data(:,k));
-    title([name{k} ,'£ºĞŞ¸ÄÖ®Ç°µÄqqÍ¼']);
+    title([name{k} ,'ï¼šä¿®æ”¹ä¹‹å‰çš„qqå›¾']);
     subplot(2,2,4),qqplot(hf(:,k));
-    title([name{k} ,'£ºĞŞ¸ÄÖ®ºóµÄqqÍ¼']);     
+    title([name{k} ,'ï¼šä¿®æ”¹ä¹‹åçš„qqå›¾']);     
     hold on;
     pause;
     hold off;
